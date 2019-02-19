@@ -287,7 +287,7 @@ class LunarLander(gym.Env, EzPickle):
             (pos.y - (self.helipad_y+LEG_DOWN/SCALE)) / (VIEWPORT_H/SCALE/2),
             vel.x*(VIEWPORT_W/SCALE/2)/FPS,
             vel.y*(VIEWPORT_H/SCALE/2)/FPS,
-            self.lander.angle,
+            self.lander.angle - 2*np.pi if self.lander.angle > np.pi else self.lander.angle,
             20.0*self.lander.angularVelocity/FPS,
             1.0 if self.legs[0].ground_contact else 0.0,
             1.0 if self.legs[1].ground_contact else 0.0
